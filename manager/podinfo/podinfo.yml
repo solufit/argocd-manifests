@@ -21,13 +21,14 @@ spec:
       releaseName: podinfo
       valuesObject:
         ingress:
-          enabled: true
-          className: cloudflare-tunnel
-          hosts:
-            - host: "podinfo.solufit.net"
-              paths:
-              - path: "/"
-                pathType: Prefix
+          enabled: false
+          #enabled: true
+          # className: cloudflare-tunnel
+          # hosts:
+          #   - host: "podinfo.solufit.net"
+          #     paths:
+          #     - path: "/"
+          #       pathType: Prefix
 
   destination:
     server: "https://kubernetes.default.svc"
