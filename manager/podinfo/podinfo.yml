@@ -19,6 +19,15 @@ spec:
     targetRevision: 6.7.1
     helm:
       releaseName: podinfo
+      valuesObject:
+        ingress:
+          enabled: true
+          className: cloudflare-tunnel
+          hosts:
+            - host: podinfo.solufit.net
+              paths:
+                - /
+          
   destination:
     server: "https://kubernetes.default.svc"
     namespace: podinfo
