@@ -1,0 +1,24 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-external-secret-eso
+  namespace: cft
+spec:
+  refreshInterval: 0.03m
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: oci-vault
+  target:
+    name: cloudflare-external-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: account_id
+      remoteRef:
+        key: manager-cft-account-id
+
+    - secretKey: tunnel_name
+      remoteRef:
+        key: manager-cft-tunnel-name
+    - secretKey: api_token
+      remoteRef:
+        key: manager-cft-api-token
