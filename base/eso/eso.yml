@@ -1,3 +1,4 @@
+# https://external-secrets.io/latest/provider/oracle-vault/
 apiVersion: v1
 kind: Namespace
 metadata:
