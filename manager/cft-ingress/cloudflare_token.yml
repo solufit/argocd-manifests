@@ -12,7 +12,7 @@ spec:
     name: cloudflare-api
     creationPolicy: Owner
   data:
-    - secretKey: cloudflare-account_id
+    - secretKey: cloudflare-account-id
       remoteRef:
         key: manager-cft-account-id
 
