@@ -24,8 +24,11 @@ spec:
           enabled: true
           className: cloudflare-tunnel
           hosts:
-            - podinfo.solufit.net
-          
+            - host: "podinfo.solufit.net"
+              paths:
+              - path: "/"
+                pathType: Prefix
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: podinfo
