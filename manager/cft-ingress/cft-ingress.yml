@@ -19,8 +19,12 @@ spec:
     targetRevision: 0.0.16
     helm:
       releaseName: cft
-      valueFiles:
-        - ./values.yml
+      valuesObject:
+        secretRef:
+          name: cloudflare-external-secret
+          accountIDKey: account_id
+          tunnelNameKey: tunnel_name
+          apiTokenKey: api_token
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cft
