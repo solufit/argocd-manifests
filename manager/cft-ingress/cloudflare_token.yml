@@ -9,7 +9,7 @@ spec:
     kind: ClusterSecretStore
     name: oci-vault
   target:
-    name: cloudflare-external-secret
+    name: cloudflare-api
     creationPolicy: Owner
   data:
     - secretKey: account_id
