@@ -12,13 +12,13 @@ spec:
     name: cloudflare-api
     creationPolicy: Owner
   data:
-    - secretKey: account_id
+    - secretKey: cloudflare-account_id
       remoteRef:
         key: manager-cft-account-id
 
-    - secretKey: tunnel_name
+    - secretKey: cloudflare-tunnel-name
       remoteRef:
         key: manager-cft-tunnel-name
-    - secretKey: api_token
+    - secretKey: api-token
       remoteRef:
         key: manager-cft-api-token
