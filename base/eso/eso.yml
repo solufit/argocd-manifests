@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eso
+  labels:
+    name: eso
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eso
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: external-secrets
+    repoURL: https://charts.external-secrets.io
+    targetRevision: 0.12.1
+    helm:
+      releaseName: eso
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: eso
