@@ -29,9 +29,9 @@ spec:
           enabled: true
           className: cloudflare-tunnel
           hosts:
-            - host: "manager.solufit.net"
+            - host: "manager-portainer.solufit.net"
               paths:
-              - path: "/portainer/"
+              - path: "/"
                 pathType: Prefix
 
   destination:
