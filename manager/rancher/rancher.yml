@@ -14,11 +14,11 @@ metadata:
 spec:
   project: default
   source:
-    chart: rancher-latest
-    repoURL: https://releases.rancher.com/server-charts/latest
-    targetRevision: 2.10.1
+    chart: rancher-stable
+    repoURL: https://releases.rancher.com/server-charts/stable
+    targetRevision: 2.10.0
     helm:
-      releaseName: rancher-latest
+      releaseName: rancher-stable
       valuesObject:
         hostname: "manager-rancher.solufit.net"
         replicas: 1
