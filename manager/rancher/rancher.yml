@@ -18,14 +18,13 @@ spec:
     repoURL: https://releases.rancher.com/server-charts/stable
     targetRevision: 2.10.1
     helm:
-      releaseName: rancher-stable
+      releaseName: rancher
       valuesObject:
         hostname: "manager-rancher.solufit.net"
         replicas: 1
         ingress:
           enabled: true
-          annotations:
-            kubernetes.io/ingress.class: "cloudflare-tunnel"
+          tls.source: "rancher"
           hosts:
             - host: "manager-rancher.solufit.net"
               paths:
