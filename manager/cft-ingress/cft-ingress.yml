@@ -40,7 +40,7 @@ spec:
         ingressClass:
           name: cloudflare-tunnel
           controllerValue: strrl.dev/cloudflare-tunnel-ingress-controller
-          isDefaultClass: false
+          isDefaultClass: true
 
         replicaCount: 1
 
