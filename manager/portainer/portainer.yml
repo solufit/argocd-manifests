@@ -27,11 +27,12 @@ spec:
           size: "5Gi"
         ingress:
           enabled: true
-          className: cloudflare-tunnel
+          annotations:
+            kubernetes.io/ingress.class: "cloudflare-tunnel"
           hosts:
-            - host: "manager-portainer.solufit.net"
+            - host: "manager.solufit.net"
               paths:
-              - path: "/"
+              - path: "/portainer"
                 pathType: Prefix
 
   destination:
