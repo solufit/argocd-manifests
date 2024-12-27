@@ -14,9 +14,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: rancher-stable
+    chart: rancher
     repoURL: https://releases.rancher.com/server-charts/stable
-    targetRevision: 2.10.0
+    targetRevision: 2.10.1
     helm:
       releaseName: rancher-stable
       valuesObject:
