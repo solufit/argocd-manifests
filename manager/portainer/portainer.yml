@@ -30,9 +30,9 @@ spec:
           annotations:
             kubernetes.io/ingress.class: "cloudflare-tunnel"
           hosts:
-            - host: "manager.solufit.net"
+            - host: "manager-portainer.solufit.net"
               paths:
-              - path: "/portainer"
+              - path: "/"
                 pathType: Prefix
 
   destination:
