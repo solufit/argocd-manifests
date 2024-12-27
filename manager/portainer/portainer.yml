@@ -22,7 +22,7 @@ spec:
       valuesObject:
         service:
           type: ClusterIP
-        persistance:
+        persistence:
           storageClass: "local-path"
           size: "5Gi"
         ingress:
