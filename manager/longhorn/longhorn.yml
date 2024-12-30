@@ -25,4 +25,4 @@ spec:
 
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: portainer
+    namespace: longhorn-system
