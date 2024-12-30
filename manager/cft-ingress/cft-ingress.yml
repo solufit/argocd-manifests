@@ -42,7 +42,7 @@ spec:
           controllerValue: strrl.dev/cloudflare-tunnel-ingress-controller
           isDefaultClass: true
 
-        replicaCount: 1
+        replicaCount: 3
 
         image:
           repository: cr.strrl.dev/strrl/cloudflare-tunnel-ingress-controller
