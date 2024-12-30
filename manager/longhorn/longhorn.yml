@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: longhorn-system
+  labels:
+    name: longhorn-system
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: longhorn
+    repoURL: https://charts.longhorn.io
+    targetRevision: 1.7.2
+    helm:
+      releaseName: longhorn
+      valuesObject:
+        service.ui.type: Rancher-Proxy
+        persistence.defaultClassReplicaCount: 1
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: portainer
