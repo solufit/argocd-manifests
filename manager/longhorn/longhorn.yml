@@ -23,7 +23,7 @@ spec:
         service.ui.type: Rancher-Proxy
         persistence:
           defaultClass: true
-          defaultClassReplicaCount: 1
+          defaultClassReplicaCount: 2
 
   destination:
     server: "https://kubernetes.default.svc"
