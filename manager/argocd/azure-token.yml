@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: argocd-azure-token
+  namespace: cft
+spec:
+  refreshInterval: 0.03m
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: oci-vault
+  target:
+    name: argocd-secret
+    creationPolicy: Merge
+  data:
+    - secretKey: oidc.azure.clientSecret
+      remoteRef:
+        key: azure-argocd-mgr-token
