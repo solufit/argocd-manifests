@@ -1,17 +1,17 @@
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  name: argocd-azure-token
-  namespace: argocd
-spec:
-  refreshInterval: 0.03m
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: oci-vault
-  target:
-    name: argocd-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: oidc.azure.clientSecret
-      remoteRef:
-        key: azure-argocd-mgr-token
+# apiVersion: external-secrets.io/v1beta1
+# kind: ExternalSecret
+# metadata:
+#   name: argocd-azure-token
+#   namespace: argocd
+# spec:
+#   refreshInterval: 0.03m
+#   secretStoreRef:
+#     kind: ClusterSecretStore
+#     name: oci-vault
+#   target:
+#     name: argocd-secret
+#     creationPolicy: Orphan
+#   data:
+#     - secretKey: oidc.azure.clientSecret
+#       remoteRef:
+#         key: azure-argocd-mgr-token
