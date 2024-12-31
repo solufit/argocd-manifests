@@ -28,6 +28,6 @@ spec:
           
 
 
-  destinatio:
+  destination:
     server: "https://kubernetes.default.svc"
     namespace: harbor
