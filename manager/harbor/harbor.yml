@@ -26,14 +26,14 @@ spec:
             hosts:
               core: "registry.solufit.net"
               
-      persistence:
-        persistentVolumeClaim:
-          registry:
-            accessMode: ReadWriteMany
-          jobservice:
-            accessMode: ReadWriteMany
-          database:
-            accessMode: ReadWriteOnce
+        persistence:
+          persistentVolumeClaim:
+            registry:
+              accessMode: ReadWriteMany
+            jobservice:
+              accessMode: ReadWriteMany
+            database:
+              accessMode: ReadWriteOnce
           
 
 
