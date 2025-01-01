@@ -20,7 +20,7 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valuesObject:
-    valueObject:
+    valuesObject:
       prometheusOperator:
         createCustomResource: true
       prometheus:
