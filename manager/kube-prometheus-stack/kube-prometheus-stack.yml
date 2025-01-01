@@ -60,8 +60,8 @@ spec:
             grafana_net:
               url: https://grafana.net
             server:
-              domain: "grafana.solufit.net"
               http-port: 80
+              domain: "grafana.solufit.net"
 
 
   destination:
