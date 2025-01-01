@@ -41,11 +41,8 @@ spec:
             size: "5Gi"
           ingress:
             enabled: true
-            hosts:
-              - host: "manager-grafana.solufit.net"
-                paths:
-                  - path: "/"
-                    pathType: Prefix
+            hosts: ["grafana.solufit.net"]
+            path: "/"
 
 
   destination:
