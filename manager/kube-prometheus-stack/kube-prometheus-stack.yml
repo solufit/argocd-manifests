@@ -43,7 +43,9 @@ spec:
             enabled: true
             hosts:
               - host: "manager-grafana.solufit.net"
-                paths: ["/"]
+                paths:
+                  - path: "/"
+                    pathType: Prefix
 
 
   destination:
