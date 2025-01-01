@@ -22,23 +22,23 @@ spec:
       valuesObject:
         prometheusOperator:
           createCustomResource: true
-        prometheus:
-          prometheusSpec:
-            storageSpec:
-              volumeClaimTemplate:
-                spec:
-                  storageClassName: "longhorn"
-                  accessModes: ["ReadWriteOnce"]
-                  resources:
-                    requests:
-                      storage: "5Gi"
+        # prometheus:
+        #   prometheusSpec:
+        #     storageSpec:
+        #       volumeClaimTemplate:
+        #         spec:
+        #           storageClassName: "longhorn"
+        #           accessModes: ["ReadWriteOnce"]
+        #           resources:
+        #             requests:
+        #               storage: "5Gi"
         grafana:
           adminPassword: "admin"
-          persistence:
-            enabled: true
-            type: pvc
-            storageClassName: "longhorn"
-            size: "5Gi"
+          # persistence:
+          #   enabled: true
+          #   type: pvc
+          #   storageClassName: "longhorn"
+          #   size: "5Gi"
           ingress:
             enabled: true
             hosts: ["grafana.solufit.net"]
