@@ -32,11 +32,15 @@ spec:
                       storage: "50Gi"
         grafana:
           adminPassword: "admin"
-          # persistence:
-          #   enabled: true
-          #   type: pvc
-          #   storageClassName: "longhorn"
-          #   size: "5Gi"
+          persistence:
+            enabled: true
+            type: sts
+            storageClassName: "longhorn"
+            accessModes:
+              - ReadWriteOnce
+            size: "20Gi"
+            finalizers:
+              - kubernetes.io/pvc-protection
           ingress:
             enabled: true
             hosts: ["grafana.solufit.net"]
