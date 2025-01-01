@@ -22,7 +22,7 @@ spec:
       valuesObject:
     valueObject:
       prometheusOperator:
-        createCustomResource: false
+        createCustomResource: true
       prometheus:
         prometheusSpec:
           storageSpec:
