@@ -31,6 +31,8 @@ spec:
                     requests:
                       storage: "50Gi"
         grafana:
+          service:
+            targetPort: 80
           adminPassword: "admin"
           persistence:
             enabled: true
@@ -45,6 +47,21 @@ spec:
             enabled: true
             hosts: ["grafana.solufit.net"]
             path: "/"
+          grafana.ini:
+            http-port: 80
+            paths:
+              data: /var/lib/grafana/
+              logs: /var/log/grafana
+              plugins: /var/lib/grafana/plugins
+              provisioning: /etc/grafana/provisioning
+            analytics:
+              check_for_updates: true
+            log:
+              mode: console
+            grafana_net:
+              url: https://grafana.net
+            server:
+              domain: "grafana.solufit.net"
 
 
   destination:
