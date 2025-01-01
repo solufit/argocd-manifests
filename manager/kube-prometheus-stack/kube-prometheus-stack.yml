@@ -20,18 +20,16 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valuesObject:
-        prometheusOperator:
-          createCustomResource: true
-        # prometheus:
-        #   prometheusSpec:
-        #     storageSpec:
-        #       volumeClaimTemplate:
-        #         spec:
-        #           storageClassName: "longhorn"
-        #           accessModes: ["ReadWriteOnce"]
-        #           resources:
-        #             requests:
-        #               storage: "5Gi"
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: "longhorn"
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: "50Gi"
         grafana:
           adminPassword: "admin"
           # persistence:
