@@ -31,8 +31,6 @@ spec:
                     requests:
                       storage: "50Gi"
         grafana:
-          service:
-            targetPort: 80
           adminPassword: "admin"
           persistence:
             enabled: true
@@ -60,8 +58,8 @@ spec:
             grafana_net:
               url: https://grafana.net
             server:
-              http-port: 80
               domain: "grafana.solufit.net"
+              root_url: "https://grafana.solufit.net/"
 
 
   destination:
