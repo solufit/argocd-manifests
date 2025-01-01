@@ -48,7 +48,6 @@ spec:
             hosts: ["grafana.solufit.net"]
             path: "/"
           grafana.ini:
-            http-port: 80
             paths:
               data: /var/lib/grafana/
               logs: /var/log/grafana
@@ -62,6 +61,7 @@ spec:
               url: https://grafana.net
             server:
               domain: "grafana.solufit.net"
+              http-port: 80
 
 
   destination:
