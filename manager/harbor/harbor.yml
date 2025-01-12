@@ -33,7 +33,7 @@ spec:
             jobservice:
               accessMode: ReadWriteMany
             database:
-              accessMode: ReadWriteOnce
+              accessMode: ReadWriteMany
           
 
 
