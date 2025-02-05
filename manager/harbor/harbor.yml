@@ -25,16 +25,23 @@ spec:
           ingress:
             hosts:
               core: "registry.solufit.net"
-              
+
         persistence:
           persistentVolumeClaim:
             registry:
               accessMode: ReadWriteMany
             jobservice:
               accessMode: ReadWriteMany
+              storageClass: "fast-disk"
+              size: "1Gi"
             database:
               accessMode: ReadWriteMany
-          
+              storageClass: "fast-disk"
+              size: "1Gi"
+            redis:
+              accessMode: ReadWriteMany
+              storageClass: "fast-disk"
+              size: "1Gi"
 
 
   destination:
