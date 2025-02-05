@@ -1,0 +1,19 @@
+apiVersion: longhorn.io/v1beta2
+kind: Node
+metadata:
+  finalizers:
+    - longhorn.io
+  generation: 1
+  name: solufit-k3s-worker-2
+  namespace: longhorn-system
+spec:
+  allowScheduling: true
+  disks:
+    fast:
+      allowScheduling: true
+      evictionRequested: false
+      path: /var/lib/longhorn-fast
+      storageReserved: 0
+      tags: ["fast"]
+  name: solufit-k3s-worker-2
+  tags: []
