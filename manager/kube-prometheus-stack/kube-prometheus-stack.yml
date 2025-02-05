@@ -38,10 +38,10 @@ spec:
           persistence:
             enabled: true
             type: sts
-            storageClassName: "longhorn"
+            storageClassName: "fast-disk"
             accessModes:
               - ReadWriteOnce
-            size: "20Gi"
+            size: "10Gi"
             finalizers:
               - kubernetes.io/pvc-protection
           ingress:
