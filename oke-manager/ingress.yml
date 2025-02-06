@@ -26,6 +26,9 @@ spec:
               oci.oraclecloud.com/load-balancer-type: "nlb"
               oci-network-load-balancer.oraclecloud.com/security-list-management-mode: All
           ingressClass: "nginx"
+          ingressClassResource:
+            default: true
+
 
 
   destination:
