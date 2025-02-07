@@ -21,7 +21,7 @@ spec:
       releaseName: rancher
       valuesObject:
         hostname: "manager-rancher.solufit.net"
-        replicas: 3
+        replicas: 1
         ingress:
           enabled: true
           ClassName: "cloudflare-tunnel"
