@@ -20,10 +20,9 @@ spec:
     helm:
       releaseName: longhorn
       valuesObject:
-        csi:
-          attacherReplicaCount: 2
-          resizerReplicaCount: 2
-          snapshotterReplicaCount: 2
+        csi.attacherReplicaCount: 2
+        csi.resizerReplicaCount: 2
+        csi.snapshotterReplicaCount: 2
         service.ui.type: Rancher-Proxy
         persistence:
           defaultClass: true
