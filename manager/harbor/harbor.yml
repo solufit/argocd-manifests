@@ -33,10 +33,12 @@ spec:
             registry:
               accessMode: ReadWriteMany
               size: "10Gi"
-            jobservice:
-              accessMode: ReadWriteMany
               storageClass: "nfs-client"
-              size: "1Gi"
+            jobservice:
+              jobLog:
+                accessMode: ReadWriteMany
+                storageClass: "nfs-client"
+                size: "1Gi"
             database:
               accessMode: ReadWriteMany
               storageClass: "nfs-client"
