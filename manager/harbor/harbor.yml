@@ -1,61 +1,62 @@
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: harbor
-#  labels:
-#    name: harbor
-#
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: harbor
-#  namespace: argocd
-#spec:
-#  project: default
-#  source:
-#    chart: harbor
-#    repoURL: https://helm.goharbor.io
-#    targetRevision: 1.16.0
-#    helm:
-#      releaseName: harbor
-#      valuesObject:
-#        externalURL: "https://registry.solufit.net"
-#        expose:
-#          ingress:
-#            hosts:
-#              core: "registry.solufit.net"
-#
-#        persistence:
-#          persistentVolumeClaim:
-#            registry:
-#              accessMode: ReadWriteMany
-#            jobservice:
-#              accessMode: ReadWriteMany
-#              storageClass: "fast-disk"
-#              size: "1Gi"
-#            database:
-#              accessMode: ReadWriteMany
-#              storageClass: "fast-disk"
-#              size: "1Gi"
-#            redis:
-#              accessMode: ReadWriteMany
-#              storageClass: "fast-disk"
-#              size: "1Gi"
-#
-#
-#  destination:
-#    server: "https://kubernetes.default.svc"
-#    namespace: harbor
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#      - Retry=true
-#    retry:
-#      limit: 5
-#      backoff:
-#        duration: 30s
-#        factor: 2
-#        maxDuration: 1
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harbor
+  labels:
+    name: harbor
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: harbor
+    repoURL: https://helm.goharbor.io
+    targetRevision: 1.16.0
+    helm:
+      releaseName: harbor
+      valuesObject:
+        externalURL: "https://registry.solufit.net"
+        expose:
+          ingress:
+            hosts:
+              core: "registry.solufit.net"
+
+        persistence:
+          persistentVolumeClaim:
+            registry:
+              accessMode: ReadWriteMany
+              size: "10Gi"
+            jobservice:
+              accessMode: ReadWriteMany
+              storageClass: "nfs-client"
+              size: "1Gi"
+            database:
+              accessMode: ReadWriteMany
+              storageClass: "nfs-client"
+              size: "1Gi"
+            redis:
+              accessMode: ReadWriteMany
+              storageClass: "nfs-client"
+              size: "1Gi"
+
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: harbor
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Retry=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 1
