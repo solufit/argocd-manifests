@@ -35,3 +35,15 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cattle-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Retry=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 1
