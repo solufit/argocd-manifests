@@ -20,6 +20,8 @@ spec:
     helm:
       releaseName: harbor
       valuesObject:
+        trivy:
+          enabled: false
         externalURL: "https://registry.solufit.net"
         expose:
           ingress:
@@ -43,10 +45,6 @@ spec:
               accessMode: ReadWriteMany
               storageClass: "nfs-client"
               size: "1Gi"
-            trivy:
-              accessMode: ReadWriteMany
-              storageClass: "nfs-client"
-              size: "5Gi"
 
 
   destination:
