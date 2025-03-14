@@ -1,80 +1,80 @@
-#apiVersion: v1
-#kind: Namespace
-#metadata:
-#  name: monitoring
-#  labels:
-#    name: monitoring
-#
-#---
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata:
-#  name: monitoring
-#  namespace: argocd
-#spec:
-#  project: default
-#  syncPolicy:
-#    automated:
-#      prune: true
-#      selfHeal: true
-#    syncOptions:
-#      - Retry=true
-#      - ServerSideApply=true
-#    retry:
-#      limit: 5
-#      backoff:
-#        duration: 30s
-#        factor: 2
-#        maxDuration: 1
-#  source:
-#    chart: kube-prometheus-stack
-#    repoURL: https://prometheus-community.github.io/helm-charts
-#    targetRevision: 67.5.0
-#    helm:
-#      releaseName: kube-prometheus-stack
-#      valuesObject:
-#        prometheus:
-#          prometheusSpec:
-#            storageSpec:
-#              volumeClaimTemplate:
-#                spec:
-#                  storageClassName: "longhorn"
-#                  accessModes: ["ReadWriteOnce"]
-#                  resources:
-#                    requests:
-#                      storage: "50Gi"
-#        grafana:
-#          adminPassword: "admin"
-#          persistence:
-#            enabled: true
-#            type: sts
-#            storageClassName: "fast-disk"
-#            accessModes:
-#              - ReadWriteOnce
-#            size: "10Gi"
-#            finalizers:
-#              - kubernetes.io/pvc-protection
-#          ingress:
-#            enabled: true
-#            hosts: ["grafana.solufit.net"]
-#            path: "/"
-#          grafana.ini:
-#            paths:
-#              data: /var/lib/grafana/
-#              logs: /var/log/grafana
-#              plugins: /var/lib/grafana/plugins
-#              provisioning: /etc/grafana/provisioning
-#            analytics:
-#              check_for_updates: true
-#            log:
-#              mode: console
-#            grafana_net:
-#              url: https://grafana.net
-#            server:
-#              domain: "grafana.solufit.net"
-#              root_url: "https://grafana.solufit.net/"
-#
-#
-#  destination:
-#    server: "https://kubernetes.default.svc"
-#    namespace: monitoring
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    name: monitoring
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Retry=true
+      - ServerSideApply=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 1
+  source:
+    chart: rancher-charts
+    repoURL: https://charts.rancher.io
+    targetRevision: 105.1.3+up61.3.2
+    helm:
+      releaseName: rancher-monitoring
+      valuesObject:
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: "nfs-client"
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: "50Gi"
+        grafana:
+          adminPassword: "admin"
+          persistence:
+            enabled: true
+            type: sts
+            storageClassName: "nfs-client"
+            accessModes:
+              - ReadWriteOnce
+            size: "10Gi"
+            finalizers:
+              - kubernetes.io/pvc-protection
+          ingress:
+            enabled: true
+            hosts: ["grafana.solufit.net"]
+            path: "/"
+          grafana.ini:
+            paths:
+              data: /var/lib/grafana/
+              logs: /var/log/grafana
+              plugins: /var/lib/grafana/plugins
+              provisioning: /etc/grafana/provisioning
+            analytics:
+              check_for_updates: true
+            log:
+              mode: console
+            grafana_net:
+              url: https://grafana.net
+            server:
+              domain: "grafana.solufit.net"
+              root_url: "https://grafana.solufit.net/"
+
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
