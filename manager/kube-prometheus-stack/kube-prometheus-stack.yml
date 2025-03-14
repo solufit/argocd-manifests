@@ -27,7 +27,7 @@ spec:
         factor: 2
         maxDuration: 10m
   source:
-    chart: rancher-charts
+    chart: rancher-monitoring
     repoURL: https://charts.rancher.io
     targetRevision: v0.75.1
     helm:
