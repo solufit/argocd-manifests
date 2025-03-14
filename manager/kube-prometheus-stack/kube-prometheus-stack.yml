@@ -25,7 +25,7 @@ spec:
       backoff:
         duration: 30s
         factor: 2
-        maxDuration: 1
+        maxDuration: 10m
   source:
     chart: rancher-charts
     repoURL: https://charts.rancher.io
