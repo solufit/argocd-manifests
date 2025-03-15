@@ -13,6 +13,7 @@ spec:
       releaseName: loki
       valuesObject:
         loki:
+          auth_enabled: false
           singleBinary:
             persistence:
               enabled: true
