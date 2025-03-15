@@ -44,6 +44,8 @@ spec:
                     requests:
                       storage: "50Gi"
         grafana:
+          initChownData:
+            enabled: false
           adminPassword: "admin"
           persistence:
             enabled: true
