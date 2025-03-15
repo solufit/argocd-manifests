@@ -46,6 +46,14 @@ spec:
 
         singleBinary:
           replicas: 3
+          persistence:
+            enabled: true
+            storageClassName: "nfs-client"
+            size: 10Gi
+
+
+        chunksCache:
+          enabled: false
 
         # Zero out replica counts of other deployment modes
         backend:
