@@ -39,6 +39,16 @@ spec:
 
         minio:
           enabled: true
+          buckets:
+            - name: chunks
+              policy: none
+              purge: false
+            - name: ruler
+              policy: none
+              purge: false
+            - name: admin
+              policy: none
+              purge: false
           persistence:
             annotations:
               "volume.beta.kubernetes.io/storage-class": "nfs-client"
