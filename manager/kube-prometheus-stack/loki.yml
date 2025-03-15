@@ -48,7 +48,7 @@ spec:
           replicas: 3
           persistence:
             enabled: true
-            storageClassName: "nfs-client"
+            storageClass: "nfs-client"
             size: 10Gi
 
 
