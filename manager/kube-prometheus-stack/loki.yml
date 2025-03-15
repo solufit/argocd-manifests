@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     chart: loki
-    repoURL:  https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+    repoURL:  https://grafana.github.io/helm-charts
     targetRevision: 6.28.0
     helm:
       releaseName: loki
