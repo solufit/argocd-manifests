@@ -20,7 +20,7 @@ spec:
     helm:
       releaseName: rancher
       valuesObject:
-        replicaCount: 2
+        replicaCount: 3
         nfs:
           server: "10.100.0.9"
           path: "/mnt/export"
