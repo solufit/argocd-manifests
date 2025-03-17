@@ -24,7 +24,7 @@ spec:
         nfs:
           server: "10.100.0.9"
           path: "/mnt/export"
-        storageClassName:
+        storageClass:
           defaultClass: true
           reclaimPolicy: Retain
           accessModes: ReadWriteMany
