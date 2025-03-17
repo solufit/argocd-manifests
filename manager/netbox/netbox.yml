@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: netbox
+  labels:
+    name: netbox
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: netbox
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: netbox
+    repoURL:  https://charts.netbox.oss.netboxlabs.com/
+    targetRevision: 5.0.46
+    helm:
+      releaseName: netbox
+      valuesObject:
+        replicaCount: 3
+        persistence:
+          enabled: true
+          storageClass: "nfs-client"
+          accessMode: ReadWriteOnce
+          size: "1Gi"
+        reportsPersistence:
+          enabled: true
+          existingClaim: ""
+          subPath: ""
+          ## Data Persistent Volume Storage Class
+          ## If defined, storageClassName: <storageClass>
+          ## If set to "-", storageClassName: "", which disables dynamic provisioning
+          ## If undefined (the default) or set to null, no storageClassName spec is
+          ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+          ##   GKE, AWS & OpenStack)
+          ##
+          storageClass: "nfs-client"
+          accessMode: ReadWriteOnce
+          size: 1Gi
+          annotations: {}
+          
+        scriptsPersistence:
+          enabled: true
+          existingClaim: ""
+          subPath: ""
+          ## Data Persistent Volume Storage Class
+          ## If defined, storageClassName: <storageClass>
+          ## If set to "-", storageClassName: "", which disables dynamic provisioning
+          ## If undefined (the default) or set to null, no storageClassName spec is
+          ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+          ##   GKE, AWS & OpenStack)
+          ##
+          storageClass: "nfs-client"
+          accessMode: ReadWriteOnce
+          size: 1Gi
+          annotations: {}
+        
+        metric:
+          enabled: true
+          serviceMonitor:
+            enabled: true
+            honorLabels: true
+        superuser:
+          name: admin
+          email: admin.solufit.net
+          password: "admin"
+          apiToken: ""
+          existingSecret: ""
+        allowdHosts:
+          - "netbox.solufit.net"
+
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: cattle-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Retry=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 10m
