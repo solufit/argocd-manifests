@@ -71,6 +71,14 @@ spec:
           existingSecret: ""
         allowdHosts:
           - "netbox.solufit.net"
+          
+        ingress:
+          enabled: true
+          className: "cloudflare-tunnel"
+          hosts:
+            - host: "netbox.solufit.net"
+              paths:
+                - /
 
 
   destination:
