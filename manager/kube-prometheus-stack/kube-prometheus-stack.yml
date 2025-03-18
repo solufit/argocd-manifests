@@ -47,6 +47,20 @@ spec:
           initChownData:
             enabled: false
           adminPassword: "admin"
+
+          datasources:
+            datasources.yaml:
+                  apiVersion: 1
+                  datasources:
+                  - name: Loki
+                    type: loki
+                    access: proxy
+                    orgId: 1
+                    url: http://loki-gateway:80
+                    basicAuth: false
+                    isDefault: false
+                    version: 1
+                    editable: false
           persistence:
             enabled: true
             type: sts
