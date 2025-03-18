@@ -26,7 +26,6 @@ spec:
           path: "/mnt/export"
         storageClass:
           defaultClass: true
-          onDelete: retain
           accessModes: ReadWriteMany
 
   destination:
