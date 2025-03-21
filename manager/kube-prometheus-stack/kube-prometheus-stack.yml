@@ -45,7 +45,7 @@ spec:
               enabled: false
               
             podMonitor:
-              enabled: false
+              enabled: true
         prometheus:
           prometheusSpec:
             storageSpec:
