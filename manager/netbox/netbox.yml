@@ -27,7 +27,7 @@ spec:
           accessMode: ReadWriteOnce
           size: "1Gi"
         reportsPersistence:
-          enabled: true
+          enabled: false
           existingClaim: ""
           subPath: ""
           ## Data Persistent Volume Storage Class
@@ -43,7 +43,7 @@ spec:
           annotations: {}
           
         scriptsPersistence:
-          enabled: true
+          enabled: false
           existingClaim: ""
           subPath: ""
           ## Data Persistent Volume Storage Class
