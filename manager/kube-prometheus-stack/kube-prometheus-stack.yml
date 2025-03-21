@@ -41,6 +41,9 @@ spec:
             podMonitor:
               enabled: true
               jobLabel: "node-exporter"
+              additionalLabels:
+                jobLabel: "node-exporter"
+                release: "node-exporter"
         prometheus:
           prometheusSpec:
             storageSpec:
