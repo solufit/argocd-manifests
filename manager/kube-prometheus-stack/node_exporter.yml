@@ -1,0 +1,61 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  generation: 2
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/instance: monitoring
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: prometheus-node-exporter
+    app.kubernetes.io/part-of: prometheus-node-exporter
+    app.kubernetes.io/version: 1.9.0
+    helm.sh/chart: prometheus-node-exporter-4.44.1
+    jobLabel: node-exporter
+    release: node-exporter
+  managedFields:
+    - apiVersion: monitoring.coreos.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            f:app.kubernetes.io/component: {}
+            f:app.kubernetes.io/instance: {}
+            f:app.kubernetes.io/managed-by: {}
+            f:app.kubernetes.io/name: {}
+            f:app.kubernetes.io/part-of: {}
+            f:app.kubernetes.io/version: {}
+            f:helm.sh/chart: {}
+            f:jobLabel: {}
+            f:release: {}
+        f:spec:
+          f:attachMetadata:
+            f:node: {}
+          f:jobLabel: {}
+          f:namespaceSelector:
+            f:matchNames: {}
+          f:podMetricsEndpoints: {}
+          f:selector: {}
+      manager: argocd-controller
+      operation: Apply
+  name: kube-prometheus-stack-prometheus-node-exporter
+  namespace: monitoring
+spec:
+  attachMetadata:
+    node: false
+  jobLabel: node-exporter
+  namespaceSelector:
+    matchNames:
+      - monitoring
+  podMetricsEndpoints:
+    - enableHttp2: false
+      filterRunning: true
+      followRedirects: false
+      honorLabels: true
+      honorTimestamps: true
+      path: /metrics
+      port: http-metrics
+      scheme: http
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: kube-prometheus-stack
+      app.kubernetes.io/name: prometheus-node-exporter
