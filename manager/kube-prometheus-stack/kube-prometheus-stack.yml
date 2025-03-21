@@ -34,6 +34,10 @@ spec:
       releaseName: kube-prometheus-stack
       valuesObject:
         kube-state-metrics:
+          prometheus:
+            monitor:
+              enabled: false
+
           service:
             annotations:
               app.kubernetes.io/instance : kube-prometheus-stack
