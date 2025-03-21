@@ -83,7 +83,7 @@ spec:
 
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: cattle-system
+    namespace: netbox
   syncPolicy:
     automated:
       prune: true
