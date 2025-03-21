@@ -33,6 +33,10 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valuesObject:
+        prometheus-node-exporter:
+          prometheus:
+            monitor:
+              enabled: false
         prometheus:
           prometheusSpec:
             storageSpec:
