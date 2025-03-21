@@ -33,6 +33,11 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valuesObject:
+        kube-state-metrics:
+          service:
+            annotations:
+              app.kubernetes.io/instance : kube-prometheus-stack
+
         prometheus-node-exporter:
           nameOverride: "node-exporter"
           podLabels:
