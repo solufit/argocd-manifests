@@ -36,7 +36,7 @@ spec:
         prometheus-node-exporter:
           prometheus:
             monitor:
-              enabled: false
+              enabled: true
         prometheus:
           prometheusSpec:
             storageSpec:
