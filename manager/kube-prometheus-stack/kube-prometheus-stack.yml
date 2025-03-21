@@ -37,7 +37,7 @@ spec:
           podLabels:
     ## Add the 'node-exporter' label to be used by serviceMonitor to match standard common usage in rules and grafana dashboards
             jobLabel: node-exporter
-            app.kubernetes.io/name: prometheus-node-exporter
+            app.kubernetes.io/name: node-exporter
 
           prometheus:
             monitor:
