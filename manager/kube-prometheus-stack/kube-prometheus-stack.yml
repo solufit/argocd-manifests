@@ -40,6 +40,7 @@ spec:
               
             podMonitor:
               enabled: true
+              jobLabel: "node-exporter"
         prometheus:
           prometheusSpec:
             storageSpec:
