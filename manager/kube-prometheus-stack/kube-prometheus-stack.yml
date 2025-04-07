@@ -83,6 +83,11 @@ spec:
                     isDefault: false
                     version: 1
                     editable: false
+          extraSecretMounts:
+            - name: azure-auth
+              secretName: grafana-azure-secret
+              mountPath: /etc/secrets/grafana
+              readOnly: true
           persistence:
             enabled: true
             type: sts
@@ -111,23 +116,18 @@ spec:
             server:
               domain: "grafana.solufit.net"
               root_url: "https://grafana.solufit.net/"
-            # auth.azuread:
-            #   name: Solufit Azure AD
-            #   enabled: false
-            #   client_authentication: "client_secret_post"
-            #
-            #   allow_sign_up: true
-            #   auto_login: false
-            #
-            #   # Reference: https://grafana.com/docs/grafana/latest/auth/azuread/
-            #   # Please refer the following document to use secret
-            #   # https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md#how-to-securely-reference-secrets-in-grafanaini
-            #   client_id: "client_id"
-            #   client_secret: "client_secret"
-            #   scope: "openid email profile"
-            #   auth_url: "https://login.microsoftonline.com/tenant_id/oauth2/v2.0/authorize"
-            #   token_url: "https://login.microsoftonline.com/tenant_id/oauth2/v2.0/token"
-            #   use_pkce: true
+            auth.azuread:
+              name: "Solufit Azure AD"
+              enabled: true
+              client_authentication: "client_secret_post"
+              allow_sign_up: true
+              auto_login: false
+              client_id: "${__file:{/etc/secrets/grafana/client-id}}"
+              client_secret: "${__file:{/etc/secrets/grafana/client-secret}}"
+              scope: "openid email profile"
+              auth_url: "https://login.microsoftonline.com/${__file:{/etc/secrets/grafana/tenant-id}}/oauth2/v2.0/authorize"
+              token_url: "https://login.microsoftonline.com/${__file:{/etc/secrets/grafana/tenant-id}}/oauth2/v2.0/token"
+              use_pkce: true
 
 
 
