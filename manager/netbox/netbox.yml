@@ -81,18 +81,18 @@
 #                - /
 
 
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: netbox
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - Retry=true
-    retry:
-      limit: 5
-      backoff:
-        duration: 30s
-        factor: 2
-        maxDuration: 10m
+#  destination:
+#    server: "https://kubernetes.default.svc"
+#    namespace: netbox
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
+#    syncOptions:
+#      - Retry=true
+#    retry:
+#      limit: 5
+#      backoff:
+#        duration: 30s
+#        factor: 2
+#        maxDuration: 10m
